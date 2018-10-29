@@ -1,6 +1,6 @@
 {
   "name": "canes",
-  "version": "5.15.1",
+  "version": "5.15.2",
   "main": "dist/can.mjs",
   "files": [
     "dist"
