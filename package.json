@@ -1,12 +1,14 @@
 {
   "name": "canes",
   "version": "5.15.0",
-  "main": "dist/can",
+  "main": "dist/can.mjs",
   "files": [
     "dist"
   ],
   "scripts": {
+    "build": "npm run build:rollup:b",
     "build:rollup": "rollup -c",
+    "build:rollup:b": "node --experimental-modules ./rollup.build.mjs",
     "watch": "rollup -c -w",
     "dev": "npm-run-all --parallel start watch",
     "start": "serve public",
@@ -25,10 +27,10 @@
     "test-local": "npm run build && npm run testee",
     "test-production": "npm run build-tests && npm run testee-production",
     "test-sauce-labs": "node test/test-sauce-labs.js",
-    "release:pre": "npm version prerelease && npm run build && npm publish --tag=pre",
-    "release:patch": "npm version patch && npm run build && npm publish",
-    "release:minor": "npm version minor && npm run build && npm publish",
-    "release:major": "npm version major && npm run build && npm publish",
+    "release:pre": "npm version prerelease && npm run build:rollup:b && npm publish --tag=pre",
+    "release:patch": "npm version patch && npm run build:rollup:b && npm publish",
+    "release:minor": "npm version minor && npm run build:rollup:b && npm publish",
+    "release:major": "npm version major && npm run build:rollup:b && npm publish",
     "build:steal": "node build.steal.js && npm run make-copy-of-globals-for-can4-compat",
     "build-tests": "node test/build.js",
     "build-webpack-test": "webpack -o test/builders/webpack/bundle.js test/builders/webpack/index.js",
