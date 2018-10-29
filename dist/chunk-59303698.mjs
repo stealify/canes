@@ -1,0 +1,2 @@
+import"./chunk-5f1245ff.mjs";import{a as canReflect}from"./chunk-7e0220de.mjs";var map=function(e,a){var t,n=[];for(var p in t=canReflect.assignMap({},e),canReflect.eachKey(a,function(p,r){e&&e.hasOwnProperty(r)?a[r]!==e[r]&&n.push({key:r,type:"set",value:p}):n.push({key:r,type:"add",value:p}),delete t[r]}),t)n.push({key:p,type:"delete"});return n};export{map as a};
+//# sourceMappingURL=chunk-59303698.js.map

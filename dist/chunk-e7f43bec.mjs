@@ -1,0 +1,2 @@
+import{a as process$1}from"./chunk-bacf0c54.mjs";import{b as globals}from"./chunk-cc1f8896.mjs";globals.define("isNode",function(){return"object"==typeof process$1&&"[object process]"==={}.toString.call(process$1)});var isNode=globals.makeExport("isNode");globals.define("isBrowserWindow",function(){var o=globals.getKeyValue("isNode");return"undefined"!=typeof window&&"undefined"!=typeof document&&!1===o});var isBrowserWindow=globals.makeExport("isBrowserWindow");export{isBrowserWindow as a,isNode as b};
+//# sourceMappingURL=chunk-e7f43bec.js.map

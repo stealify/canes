@@ -1,0 +1,2 @@
+import"./chunk-805ffcb4.mjs";import{a as namespace}from"./chunk-3b4c7b38.mjs";var canParseUri=namespace.parseURI=function(a){var r=String(a).replace(/^\s+|\s+$/g,"").match(/^([^:\/?#]+:)?(\/\/(?:[^:@]*(?::[^:@]*)?@)?(([^:\/?#]*)(?::(\d*))?))?([^?#]*)(\?[^#]*)?(#[\s\S]*)?/);return r?{href:r[0]||"",protocol:r[1]||"",authority:r[2]||"",host:r[3]||"",hostname:r[4]||"",port:r[5]||"",pathname:r[6]||"",search:r[7]||"",hash:r[8]||""}:null};export{canParseUri as a,canParseUri as b};
+//# sourceMappingURL=chunk-17b31772.js.map

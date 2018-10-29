@@ -1,0 +1,2 @@
+import"./chunk-805ffcb4.mjs";import{a as namespace}from"./chunk-3b4c7b38.mjs";function buildParam(a,r,n){if(Array.isArray(r))for(var e=0,o=r.length;e<o;++e)buildParam(a+"[]",r[e],n);else if(r&&"object"==typeof r)for(var c in r)buildParam(a+"["+c+"]",r[c],n);else n(a,r)}var canParam=namespace.param=function(a){var r=[],n=function(a,n){r.push(encodeURIComponent(a)+"="+encodeURIComponent(n))};for(var e in a)buildParam(e,a[e],n);return r.join("&").replace(/%20/g,"+")};export{canParam as a,canParam as b};
+//# sourceMappingURL=chunk-27026eab.js.map

@@ -1,0 +1,2 @@
+var defineLazyValue=function(e,t,a,i){Object.defineProperty(e,t,{configurable:!0,get:function(){Object.defineProperty(this,t,{value:void 0,writable:!0});var r=a.call(this,e,t);return Object.defineProperty(this,t,{value:r,writable:!!i}),r},set:function(e){return Object.defineProperty(this,t,{value:e,writable:!!i}),e}})};export{defineLazyValue as a,defineLazyValue as b};
+//# sourceMappingURL=chunk-b1806013.js.map
