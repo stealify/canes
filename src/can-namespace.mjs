@@ -1,0 +1,1 @@
+export { default, default as can } from "can-namespace";

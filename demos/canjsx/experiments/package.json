@@ -1,0 +1,42 @@
+{
+  "name": "nils",
+  "version": "0.0.2",
+  "description": "A Framework of Frameworks for the Future of Webdevelopment",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js --exec babel-node --presets es2015,stage-2",
+    "build": "babel lib -d dist --presets es2015,stage-2",
+    "serve": "node dist/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/direktspeed/nils.git"
+  },
+  "keywords": [
+    "Nils",
+    "framework",
+    "babeli",
+    "babel",
+    "minify",
+    "assets",
+    "webcomponents",
+    "stream",
+    "loader"
+  ],
+  "author": "Frank Lemanschik <frank@dspeed.eu>",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/direktspeed/nils/issues"
+  },
+  "homepage": "https://github.com/direktspeed/nils#readme",
+  "devDependencies": {
+    "babel-minify": "^0.2.0",
+    "babel-cli": "^6.11.4",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-stage-2": "^6.11.0",
+    "babel-register": "^6.11.6",
+    "mocha": "^3.0.1",
+    "nodemon": "^1.10.0"
+  }
+}

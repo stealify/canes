@@ -1,0 +1,55 @@
+<html>
+<head>
+<script src="https://unpkg.com/most/dist/most.min.js"></script>
+
+</head>
+  <body>
+    <form>
+	<input class="x"> + <input class="y"> = <span class="result"></span> / <span class="result2"></span>
+</form>
+<script type="text/javascript">
+
+
+function add(x, y) {
+  return x + y;
+}
+
+function toNumber(e) {
+  return Number(e.target.value)
+}
+
+const xInput = document.querySelector('input.x')
+const yInput = document.querySelector('input.y')
+const fromEvent = most.fromEvent
+const combine = most.combine
+
+//const x = fromEvent('input', xInput).map(toNumber)
+//const y = fromEvent('input', yInput).map(toNumber)
+
+// result is the live current value of adding x and y
+//const result = combine(add, x, y)
+const result = most.mergeArray([most.of({ name: 'frank' }),most.of({ nn: 'fran22k' })])
+.loop((lastSetVal,setValue)=>{
+  if (setValue.name){
+    lastSetVal.name = setValue.name
+  } else {
+    lastSetVal.nn = setValue.nn
+  }
+  return { seed: lastSetVal, value: lastSetVal }
+},{})
+
+//(add, x, y)
+
+//const result2
+
+
+// Observe the result value by rendering it to the resultNode
+result.observe(function renderResult(result) {
+	document.querySelector('.result').textContent = result.name + ' ' + result.nn
+  return
+})
+// result is the live current value of adding x and y
+
+</script>
+  </body>
+</html>

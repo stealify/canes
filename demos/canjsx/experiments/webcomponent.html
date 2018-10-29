@@ -1,0 +1,52 @@
+<script type="text/javascript">
+const most = require('most')
+class HelloElement extends HTMLElement {
+  /* Nils WebCompnent Method */
+  constructor(){
+    super()
+    var MutationObserver = window.MutationObserver
+    || window.WebKitMutationObserver
+    || window.MozMutationObserver;
+
+    var mutationHandler = new MutationObserver(function(mutationRecordsArray) {
+      //most.from(mutationRecordsArray)
+      this.dispatchEvent(new CustomEvent('build', mutationRecordsArray))
+      //console.log('good', mutationRecordsArray)
+    }.bind(this))
+
+    /* nativ
+    this.addEventListener('build', function eventHandler(e) {
+      console.log('The time is: ' + e.detail);
+    }, false);
+    */
+     // most.fromEvent('build',this).map(function (mutationRecordsArray){
+     //
+     // })
+    //https://github.com/rafaelw/mutation-summary/blob/master/src/mutation-summary.js
+    // Massiv Implamentation for observing it all
+    mutationHandler.observe(this, {
+        attributes: true,
+        //childList: true,
+        //characterData: true
+    });
+    // auto garbeg collected if target is away
+    // mutationHandler.disconnect();  // later, you can stop observing
+  }
+
+  /* Nativ WebCompnent Method
+  // Monitor the 'name' attribute for changes.
+  static get observedAttributes() {return ['name']; }
+
+  // Respond to attribute changes.
+  attributeChangedCallback(attr, oldValue, newValue) {
+    most.of(oldValue).map((props)=>)
+    if (attr == 'name') {
+      this.textContent = `Hello, ${newValue}`;
+    }
+  }
+  */
+}
+
+// Define the new element
+customElements.define('hello-element', HelloElement);
+</script>

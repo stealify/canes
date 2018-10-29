@@ -1,8 +1,15 @@
 {
-  "name": "can",
+  "name": "canes",
   "version": "5.15.0",
-  "main": "can.js",
+  "main": "can",
+  "files": [
+    "dist"
+  ],
   "scripts": {
+    "build:rollup": "rollup -c",
+    "watch": "rollup -c -w",
+    "dev": "npm-run-all --parallel start watch",
+    "start": "serve public",
     "preversion": "npm test",
     "version": "git commit -am \"Update dist for release\" && git checkout -b release && git add -f dist/",
     "postversion": "git push --tags && git checkout - && git branch -D release && git push",
@@ -11,7 +18,7 @@
     "testee-production": "testee test/production.html --browsers firefox",
     "testee-global-build": "testee test/global-build.html --browsers firefox",
     "http-server": "http-server -p 3000 --silent",
-    "test": "npm run test-development && npm run test-production && npm run test-builders && npm run test-global-build",
+    "test": "jest",
     "test-builders": "npm run build-webpack-test && npm run testee-builders",
     "test-development": "npm run testee",
     "test-global-build": "npm run build && npm run testee-global-build",
@@ -22,7 +29,7 @@
     "release:patch": "npm version patch && npm run build && npm publish",
     "release:minor": "npm version minor && npm run build && npm publish",
     "release:major": "npm version major && npm run build && npm publish",
-    "build": "node build.js && npm run make-copy-of-globals-for-can4-compat",
+    "build:steal": "node build.steal.js && npm run make-copy-of-globals-for-can4-compat",
     "build-tests": "node test/build.js",
     "build-webpack-test": "webpack -o test/builders/webpack/bundle.js test/builders/webpack/index.js",
     "document": "npm run deps-bundle && bit-docs",
@@ -31,16 +38,11 @@
     "make-copy-of-globals-for-can4-compat": "echo 'console.warn(\"This build is deprecated. Please update your URLs to the version of CanJS you intend to use, such as https://unpkg.com/can@4/dist/global/can.js\");' | cat - dist/global/core.js > dist/global/can.js && echo 'console.warn(\"This build is deprecated. Please update your URLs to the version of CanJS you intend to use, such as https://unpkg.com/can@4/dist/global/can.all.js\");' | cat - dist/global/everything.js > dist/global/can.all.js"
   },
   "title": "CanJS",
-  "description": "MIT-licensed, client-side, JavaScript framework that makes building rich web applications easy.",
+  "description": "Client and Server side, JavaScript framework that makes building rich applications and web pages easy.",
   "keywords": [
     "CanJS",
     "DoneJS"
   ],
-  "author": {
-    "name": "Bitovi",
-    "email": "contact@bitovi.com",
-    "web": "http://bitovi.com/"
-  },
   "homepage": "http://canjs.com/",
   "repository": {
     "type": "git",
@@ -144,11 +146,23 @@
     "can-view-scope": "4.11.0",
     "can-view-target": "4.1.0"
   },
+  "author": {
+    "name": "Frank Lemanschik",
+    "email": "frank@dspeed.eu",
+    "web": "http://dspeed.eu"
+  },
+  "license": "Apache-2.0",
   "devDependencies": {
+    "@babel/code-frame": "^7.0.0",
+    "@most/core": "^1.3.2",
+    "@most/dom-event": "^2.0.0",
+    "@most/scheduler": "^1.2.1",
+    "babel-eslint": "^10.0.1",
     "bit-docs": "0.0.11",
     "can-reflect-tests": "<2.0.0",
     "can-test-helpers": "^1.1.1",
     "es6-promise-polyfill": "^1.2.0",
+    "eslint": "^5.6.1",
     "feathers": "^2.0.3",
     "feathers-authentication-client": "^0.1.6",
     "feathers-hooks": "^2.0.0",
@@ -161,9 +175,23 @@
     "jquery": "2.x - 3.x",
     "jquery-ui": "^1.12.0",
     "kefir": "^3.8.0",
+    "less": "^3.8.1",
+    "livereload": "^0.7.0",
+    "node-sass": "^4.9.3",
+    "npm-run-all": "^4.1.3",
     "prop-types": "^15.5.10",
     "qunitjs": "^2.4.0",
+    "rollup": "^0.66.6",
+    "rollup-plugin-commonjs": "^9.1.8",
+    "rollup-plugin-multi-entry": "^2.0.2",
+    "rollup-plugin-node-builtins": "^2.1.2",
+    "rollup-plugin-node-globals": "^1.4.0",
+    "rollup-plugin-node-resolve": "^3.4.0",
+    "rollup-plugin-postcss": "^1.6.2",
+    "rollup-plugin-string": "^2.0.2",
+    "rollup-plugin-terser": "^3.0.0",
     "semver": "^5.5.0",
+    "serve": "^6.5.8",
     "socket.io-client": "^1.7.2",
     "steal": "^2.0.0-pre.13",
     "steal-conditional": "^0.4.0",
@@ -172,20 +200,23 @@
     "steal-socket.io": "^4.0.9",
     "steal-stache": "^4.0.0",
     "steal-tools": "2.0.4",
+    "stylus": "^0.54.5",
+    "terser": "^3.10.0",
     "test-saucelabs": "0.0.6",
     "testee": "^0.8.1",
     "webpack": "^4.12.0",
-    "webpack-cli": "^3.0.7"
+    "webpack-cli": "^3.0.7",
+    "xmlhttprequest": "^1.8.0"
   },
   "demos": [
-    "http://canjs.us/#examples",
-    "http://canjs.us/recipes"
+    "http://canjs.com/#examples",
+    "http://canjs.com/recipes"
   ],
-  "googleAnalyticsTrackingCode": "UA-2302003-11",
+  "googleAnalyticsTrackingCode": "",
   "licenses": [
     {
-      "type": "MIT",
-      "url": "http://opensource.org/licenses/mit-license.php"
+      "type": "Apache-2.0",
+      "url": "https://spdx.org/licenses/Apache-2.0.html#licenseText"
     }
   ],
   "sideEffects": false,

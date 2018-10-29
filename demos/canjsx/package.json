@@ -1,0 +1,53 @@
+{
+  "name": "nils-canjs",
+  "version": "1.0.0",
+  "main": "example-component.js",
+  "license": "Apache-2.0",
+  "scripts": {
+    "deps-bundle": "steal-tools bundle --deps --dest dist/my-app",
+    "dev-bundle": "steal-tools bundle --dev"
+  },
+  "steal": {
+    "main": "example-component",
+    "directories": {
+      "lib": "."
+    },
+    "configDependencies": [
+      "live-reload",
+      "node_modules/can-zone/register"
+    ],
+    "plugins": [
+      "steal-less",
+      "steal-stache"
+    ],
+    "envs": {
+      "server-production": {
+        "renderingBaseURL": ""
+      }
+    },
+    "serviceBaseURL": ""
+  },
+  "dependencies": {
+    "@nikolaus/nils": "^0.0.5",
+    "bootstrap": "^3.3.7",
+    "can-connect-feathers": "^3.7.0",
+    "can-make-rest": "^0.1.2",
+    "can-route": "^3.0.8",
+    "can-route-pushstate": "^3.0.3",
+    "can-set": "^1.1.0",
+    "os": "^0.1.1",
+    "crypto": "^1.0.1",
+    "can-component": "^3.3.6",
+    "can-connect": "^1.5.10",
+    "can-define": "^1.5.4",
+    "can-stache": "^3.13.1",
+    "can-view-autorender": "^3.1.2",
+    "can-zone": "^0.6.14",
+    "steal": "^1.5.15",
+    "steal-less": "^1.2.0",
+    "steal-stache": "^3.1.2"
+  },
+  "devDependencies": {
+    "steal-tools": "^1.9.1"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "id": "6d743fe7-1cd4-49b1-be82-f2765bf0b544",
+  "version": "1.1",
+  "name": "canes",
+  "url": "https://canjs.com",
+  "tests": [{
+    "id": "b76450a2-ea13-4c9b-a47d-4644d939d6ef",
+    "name": "open guides",
+    "commands": [{
+      "id": "c967c21f-5794-4845-b0d6-4a2bd5923f9a",
+      "comment": "",
+      "command": "open",
+      "target": "/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "38b67cfe-f9de-46ae-9b85-f3acbb4974a6",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "550x691",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "553876cc-5efd-4009-8e47-7645bf9de14b",
+      "comment": "",
+      "command": "click",
+      "target": "css=label",
+      "targets": [
+        ["css=label", "css"],
+        ["css=label", "css:finder"],
+        ["xpath=//label", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "32e9c3f6-50da-46a0-93c1-85ac8cf0bd14",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Guides",
+      "targets": [
+        ["linkText=Guides", "linkText"],
+        ["css=.parent:nth-child(2) > .page", "css:finder"],
+        ["xpath=//div[@id='left']/div[2]/canjs-sidebar/ul/li[2]/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, 'doc/guides.html')]", "xpath:href"],
+        ["xpath=//canjs-sidebar/ul/li[2]/a", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "407bb9f9-46ba-4ca8-9e19-1e7cf0b0b71c",
+      "comment": "",
+      "command": "click",
+      "target": "linkText=Setting Up CanJS",
+      "targets": [
+        ["linkText=Setting Up CanJS", "linkText"],
+        ["css=li:nth-child(1) li:nth-child(1) > .page", "css:finder"],
+        ["xpath=//div[@id='left']/div[2]/canjs-sidebar/ul/li[2]/ul/li/ul/li/a", "xpath:idRelative"],
+        ["xpath=//a[contains(@href, './guides/setup.html')]", "xpath:href"],
+        ["xpath=//li/ul/li/a", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "cdcf9cde-33f4-4771-967a-e6e06295b874",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["b76450a2-ea13-4c9b-a47d-4644d939d6ef"]
+  }],
+  "urls": ["https://canjs.com/"],
+  "plugins": []
+}

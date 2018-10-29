@@ -1,0 +1,44 @@
+{
+  "name": "example-component",
+  "version": "1.0.0",
+  "main": "example-component.js",
+  "license": "Apache-2.0,
+  "scripts": {
+    "dev-bundle": "steal-tools bundle --dev"
+  },
+  "steal": {
+    "main": "example-component.js",
+    "directories": {
+      "lib": "."
+    },
+    "configDependencies": [
+      "live-reload",
+      "node_modules/can-zone/register"
+    ],
+    "plugins": [
+      "done-css",
+      "done-component",
+      "steal-less",
+      "steal-stache"
+    ],
+    "envs": {
+      "server-production": {
+        "renderingBaseURL": "/dist"
+      }
+    },
+    "serviceBaseURL": ""
+  },
+  "dependencies": {
+    "can-component": "^3.3.6",
+    "can-connect": "^1.5.10",
+    "can-define": "^1.5.4",
+    "can-stache": "^3.13.1",
+    "can-view-autorender": "^3.1.2",
+    "can-zone": "^0.6.14",
+    "steal": "^1.5.15",
+    "steal-less": "^1.2.0",
+    "steal-stache": "^3.1.2",
+    "steal-tools": "^1.9.1",
+    "systemjs": "^0.20.19"
+  }
+}
