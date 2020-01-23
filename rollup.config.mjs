@@ -1,12 +1,12 @@
-import string from 'rollup-plugin-string';
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import builtins from 'rollup-plugin-node-builtins';
-import globals from 'rollup-plugin-node-globals';
-import Debug from 'debug';
-import Terser from 'terser'
-const minify = Terser.minify
-const debug = Debug('rollup.config.mjs')
+import string from "rollup-plugin-string";
+import resolve from "rollup-plugin-node-resolve";
+import commonjs from "rollup-plugin-commonjs";
+import builtins from "rollup-plugin-node-builtins";
+import globals from "rollup-plugin-node-globals";
+import Debug from "debug";
+import Terser from "terser";
+const minify = Terser.minify;
+const debug = Debug("rollup.config.mjs");
 function _highlight() {
   const data = _interopRequireWildcard(require("@babel/highlight"));
 
@@ -150,60 +150,60 @@ function codeFrameColumns(rawLines, loc, opts = {}) {
 }
 
 var to_ascii = typeof atob == "undefined" ? function(b64) {
-    if (Buffer.from && Buffer.from !== Uint8Array.from) {
-      // Node >= 4.5.0
-      return Buffer.from(b64, "base64").toString();
-    } else {
-      // Node < 4.5.0, old API, manual safeguards
-      if (typeof b64 !== "string") throw new Errror("\"b64\" must be a string");
-      return new Buffer(b64, "base64").toString();
-    }
+  if (Buffer.from && Buffer.from !== Uint8Array.from) {
+    // Node >= 4.5.0
+    return Buffer.from(b64, "base64").toString();
+  } else {
+    // Node < 4.5.0, old API, manual safeguards
+    if (typeof b64 !== "string") throw new Errror("\"b64\" must be a string");
+    return new Buffer(b64, "base64").toString();
+  }
 } : atob;
 
 var to_base64 = typeof btoa == "undefined" ? function(str) {
-    if (Buffer.from && Buffer.from !== Uint8Array.from) {
-      // Node >= 4.5.0
-      return Buffer.from(str).toString("base64");
-    } else {
-      // Node < 4.5.0, old API, manual safeguards
-      if (typeof str !== "string") throw new Errror("\"str\" must be a string");
-      return new Buffer(str).toString("base64");
-    }
+  if (Buffer.from && Buffer.from !== Uint8Array.from) {
+    // Node >= 4.5.0
+    return Buffer.from(str).toString("base64");
+  } else {
+    // Node < 4.5.0, old API, manual safeguards
+    if (typeof str !== "string") throw new Errror("\"str\" must be a string");
+    return new Buffer(str).toString("base64");
+  }
 } : btoa;
 
 function read_source_map(code) {
-    var match = /\n\/\/# sourceMappingURL=data:application\/json(;.*?)?;base64,(.*)/.exec(code);
-    if (!match) {
-        AST_Node.warn("inline source map not found");
-        return null;
-    }
-    return to_ascii(match[2]);
+  var match = /\n\/\/# sourceMappingURL=data:application\/json(;.*?)?;base64,(.*)/.exec(code);
+  if (!match) {
+    AST_Node.warn("inline source map not found");
+    return null;
+  }
+  return to_ascii(match[2]);
 }
 
 function set_shorthand(name, options, keys) {
-    if (options[name]) {
-        keys.forEach(function(key) {
-            if (options[key]) {
-                if (typeof options[key] != "object") options[key] = {};
-                if (!(name in options[key])) options[key][name] = options[name];
-            }
-        });
-    }
+  if (options[name]) {
+    keys.forEach(function(key) {
+      if (options[key]) {
+        if (typeof options[key] != "object") options[key] = {};
+        if (!(name in options[key])) options[key][name] = options[name];
+      }
+    });
+  }
 }
 
 function init_cache(cache) {
-    if (!cache) return;
-    if (!("props" in cache)) {
-        cache.props = new Dictionary();
-    } else if (!(cache.props instanceof Dictionary)) {
-        cache.props = Dictionary.fromObject(cache.props);
-    }
+  if (!cache) return;
+  if (!("props" in cache)) {
+    cache.props = new Dictionary();
+  } else if (!(cache.props instanceof Dictionary)) {
+    cache.props = Dictionary.fromObject(cache.props);
+  }
 }
 
 function to_json(cache) {
-    return {
-        props: cache.props.toObject()
-    };
+  return {
+    props: cache.props.toObject()
+  };
 }
 /*
 function minify(files, options) {
@@ -420,7 +420,7 @@ will later get replaced by babel/minify as soon as we have hardned the apis
 */
 function terser() {
   return {
-    name: 'terser',
+    name: "terser",
     renderChunk(code) {
       const result = minify(code, {
         sourceMap: true,
@@ -439,18 +439,18 @@ function terser() {
 export const outputOptions = {
   output: [
     { // ESModule version, for modern browsers
-      dir: 'dist/module',
-      format: 'esm',
-      exports: 'named',
+      dir: "dist/module",
+      format: "esm",
+      exports: "named",
       sourcemap: true
     }, { // SystemJS version, for older browsers
-      dir: 'dist/system',
-      format: 'system',
-      exports: 'named',
+      dir: "dist/system",
+      format: "system",
+      exports: "named",
       sourcemap: true
     }
   ]
-}
+};
 
 export const inputOptions = {
   experimentalCodeSplitting: true,
@@ -462,18 +462,18 @@ export const inputOptions = {
       browser: false, 
     }),
     // optional exclude: ['**/index.html']
-    string({ include: '**/*.html'	}),
-    string({ include: '**/*.stache'	}),
-    string({ include: '**/*.css'	}),
+    string({ include: "**/*.html"	}),
+    string({ include: "**/*.stache"	}),
+    string({ include: "**/*.css"	}),
     !production && function(){
       return { // CanJS Related Stuff
-        name: '',
+        name: "",
         transform(code, id) {
           const isCan=(code)=>{
-            if (code.indexOf('Component.extend({') > -1) {
-              Debug('rollup.config.mjs')('')
-              console.log(id,'=>','CanJS Component');
-              return true
+            if (code.indexOf("Component.extend({") > -1) {
+              Debug("rollup.config.mjs")("");
+              console.log(id,"=>","CanJS Component");
+              return true;
             }
             return false;
           };    
@@ -488,14 +488,14 @@ export const inputOptions = {
     }(),
     terser()
   ]
-}
+};
 const rollupConfigGeneral = Object.assign(inputOptions,outputOptions);
 
 /* StealJS like keeps project folder structure */
 export const configPromise = async function configPromise() {
-  const { join } = await import('path');
-  const { readdir, stat } = await import('fs');
-  const { promisify } = await import('util');
+  const { join } = await import("path");
+  const { readdir, stat } = await import("fs");
+  const { promisify } = await import("util");
 
   async function rreaddir(dir, allFiles = []) {
     const files = (await promisify(readdir)(dir)).map(f => join(dir, f));
@@ -504,14 +504,14 @@ export const configPromise = async function configPromise() {
     return allFiles;
   }
   
-  const Files = await rreaddir('src');
+  const Files = await rreaddir("src");
     
   let input = {};
-  Files.filter(x=>((x.indexOf('.js') > -1) ||  (x.indexOf('.mjs') > -1))).map(x=>input[x.split('src/')[1].split('.js')[0].split('.mjs')[0]] = x);
+  Files.filter(x=>((x.indexOf(".js") > -1) ||  (x.indexOf(".mjs") > -1))).map(x=>input[x.split("src/")[1].split(".js")[0].split(".mjs")[0]] = x);
   debug(input);
-  return Object.assign({ input },rollupConfigGeneral)
+  return Object.assign({ input },rollupConfigGeneral);
 }();
 
-export const rollupConfig = Object.assign({ input: {'canapp/index': 'src/canapp/index.mjs'} },rollupConfigGeneral);
+export const rollupConfig = Object.assign({ input: {"canapp/index": "src/canapp/index.mjs"} },rollupConfigGeneral);
 
 export default configPromise; //Promise.resolve(rollupConfig).catch(console.log);

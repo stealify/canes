@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="description" content="CanES 5 Tinder-Like Carousel">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Stealify Tinder-Like Carousel using Stealify with view and model</title>
+  <link href="https://fonts.googleapis.com/css?family=Dosis:300,400" rel="stylesheet">
+  <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<script type="module"> 
+/* needed because not all hosting platforms like our gist runner serve .mjs as Javascript*/
+fetch('./script.mjs')
+  .then(function(response) {
+    return response.text();
+  })
+  .then(function(myJson) {   
+    var script = document.createElement("script");
+    script.innerHTML = myJson;
+    script.setAttribute("type", "module")
+    document.head.appendChild(script);
+});
+</script>
+<evil-tinder></evil-tinder>
+</body>
+</html>

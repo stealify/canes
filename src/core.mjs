@@ -1,7 +1,8 @@
 // __ Observables __
 
 // -> Core
-export { define, DefineMap, DefineList } from "./can-define.mjs";
+export { define, DefineList } from "./can-define.mjs";
+export { DefineMap } from './can-define-map.mjs'
 export { default as value } from "./can-value.mjs";
 export { default as Observation } from "./can-observation.mjs";
 export { default as ObservationRecorder } from "./can-observation-recorder.mjs";
@@ -76,7 +77,7 @@ export { default as stringToAny } from "./can-string-to-any.mjs";
 // __ DOM Utilities __
 
 // -> Infrastruture
-export { default as ajax } from "./can-ajax.mjs";
+export { default as canAjax } from "./can-ajax.mjs";
 export { default as attributeEncoder } from "./can-attribute-encoder.mjs";
 export { default as childNodes } from "./can-child-nodes.mjs";
 export { default as Control } from "./can-control.mjs";
